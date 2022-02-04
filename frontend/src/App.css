@@ -66,3 +66,222 @@
   
   
 }
+
+
+
+
+/* za kartice*/
+
+* {
+  box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+ 
+ 
+.card {
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 300px;
+}
+.card-header img {
+  width: 100%;
+ 
+  object-fit: cover;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 250px;
+  
+}
+.naslovKartice{
+  font-size:25px;
+}
+.opisProizvoda{
+  font-size:25px;
+}
+.cenaRegularna{
+  font-size:250px;
+  text-decoration:  
+  line-through;margin:0
+}
+.cenaPopust{
+  font-size:25px;
+}
+.tag {
+ 
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tag-teal {
+  background-color: #47bcd4;
+}
+.tag-purple {
+  background-color: #5e76bf;
+}
+.tag-pink {
+  background-color: #cd5b9f;
+}
+
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+.card-img-top{
+  height:300px;
+  width: auto;
+} 
+
+
+/*za div u kom se nalaze sve kartice*/
+.all-products{
+ 
+   
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:9%;
+  margin-top: 50px;
+  
+
+  
+}
+
+
+/*za dugmice sa ikonicama*/
+.btn {
+  background-color: #5e76bf;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 3px;
+  border-radius: 3px;
+  border-width: 0px;
+}
+
+.btn:hover{
+  background-color: #5ebfaa;
+
+}
+
+
+
+  
+  
+  
+
+
+ 
+
+
+/*naslov na stanicama cart i pocetna*/
+.caption{
+  text-align: center;
+}
+
+
+/*za dugmice za sortiranje*/
+.buttons{
+  margin-left:15%;
+}
+
+
+
+
+
+/*za kontakt stranicu*/
+ 
+#kontakt{
+  
+  display: flex;
+  flex-direction: column;
+  height: 88vh;
+}
+#container1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+ 
+}
+ 
+#contact-box{
+  max-width: 850px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+}
+#left{
+  height: 100%;
+  background: url("https://cdn.logojoy.com/wp-content/uploads/20210825114931/Screen-Shot-2021-08-25-at-8.49.03-AM-1024x758.jpg") no-repeat;
+  background-size: cover;
+}
+#right{
+  padding: 25px 40px;
+}
+#right h2{
+  position:relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+#right h2::after{
+  content: '';
+  position:absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width:50px;
+  border-radius:2px ;
+  background-color:#5e76bf;
+}
+.field{
+  width: 100%;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background-color:  rgba(230, 230, 230, 0.6);
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition:.3s;
+}
+.field:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.field:focus{
+  background-color: #fff;
+  border:2px solid #5e76bf;
+}
+.area{
+  min-height: 150px;
+}
+
+ 
+@media screen and (max-width:880px) {
+  #contact-box{
+      grid-template-columns: 1fr;
+  }
+  #left{
+      height: 200px;
+  }
+}
