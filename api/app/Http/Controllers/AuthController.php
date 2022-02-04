@@ -27,7 +27,7 @@ class AuthController extends Controller
 
 
          
-            return response()->json( $request->phone);
+            
 
         $user = User::create([
             'name' => $request->name, 

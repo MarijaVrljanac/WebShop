@@ -2,6 +2,7 @@ import React from 'react';
 import './RegisterPageStyle.css';
 import {useState} from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 function LoginPage() {
     const [userData,setUserData]=useState({
         email:"",
@@ -17,8 +18,9 @@ function LoginPage() {
         setUserData(newUserData); //podatke koje smo pokupili iz forme sada upisujemo u polje userData
         //te podatke sada treba da saljemo laravelu, ali to radimo kada korisnik submituje formu
     }
+    let navigate = useNavigate();
     function handleLogin(e){
-        //ovo smo dodali tek nakon axio.post() i nakon e.preventDef. treba da sredimo onaj eror 419 u verifyCRFToken-u (vidi poslednje vezbe)
+        //ovo smo dodali tek nakon axios.post() i nakon e.preventDef. treba da sredimo onaj eror 419 u verifyCRFToken-u (vidi poslednje vezbe)
         e.preventDefault(); // da zaustavi refresovanje na stranici da bi mogla da se izvrsi metoda handleLogin jer metoda onSubmit u formi vec ima neko svoje predefinisano ponasanje
 
         //za komunikaciju izmedju laravela i reacta cemo koristiti axios
@@ -27,9 +29,13 @@ function LoginPage() {
         axios
             .post("http://127.0.0.1:8000/api/login", userData )
             .then((res)=>{ //ako se uspesno izvrsi logovanje uci ce u funkciju (zbog ovog then)
-                console.log(res.data);
+                console.log(res.data[0]);
                 if(res.data.success===true){
-                    alert("USPESNO"); //srediti da kad se uloguje korisnik da mu se prikaze neka stranica, npr sa proizvodima
+                   // alert("USPESNO");  
+                   navigate("/"); //ovde cemo upisati na koju stranicu treba da ode ulogovani korisnik
+                    //token koji smo dobili od korisnika treba da sacuvamo u storag-u da bismo znali cemu taj korisnik ima pristup
+                    window.sessionStorage.setItem("auth_token",res.data[0].token);
+                    console.log(res.data[0].token);
                 }else{
                     alert("NEUSPESNO");
                 }
@@ -64,7 +70,7 @@ function LoginPage() {
                                     <button className="btn btn--pill btn--green" type="submit" id="login" name="login">Submit</button>
                                 </div>
                                 <br/><br/>
-                                 
+                                <p><a href="/register"  className='tekstForme'>I am new here!</a></p>
                         </form>
                     </div>
                 </div>
