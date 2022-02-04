@@ -1,16 +1,22 @@
 import Proizvod from "./Proizvod";
 import React from "react";
 
-const Korpa = ({ products,onAdd,onRemove}) => {
-  return (
-    <div>
-      <h2 className="caption">Moja korpa</h2>
-      <div className="all-products">
-      {products.map((p) => (
-        <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1}  />
-      ))}</div></div>
-    
-  );
-};
+const Korpa = ({products}) => {
+    return (
+      <div className="cart-container">
+          <div className="korpaDiv"><h3>Vaša korpa:</h3></div>
+          
+          {products.map((prod)=> (
+            <Proizvod product={prod} key={prod.id} inCart={0}/>
+          ))}
+
+
+      <div className="cenaDiv"><h3>Ukupna cena proizvoda: {products.price}</h3>
+          </div>
+      </div>
+
+      
+    );
+  };
 
 export default Korpa;

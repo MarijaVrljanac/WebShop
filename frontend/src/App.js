@@ -18,7 +18,6 @@ function App() {
       id: 1,
       image: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/rainbow-candy-lolipop-shana-novak.jpg",
       name: "Lizalica",
-      
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
       price:250,
@@ -124,7 +123,7 @@ function App() {
   ]);
   function refreshCart() {
     let u_korpi = products.filter((p) => p.amount > 0);
-    setCartProducts (u_korpi);
+    setCartProducts(u_korpi);
   }
   function addProduct(name, id) {
     
@@ -143,7 +142,11 @@ function App() {
     setCartNum(cartNum - 1);
     products.forEach((p) => {
       if (p.id === id) {
-        p.amount--; 
+        if(p.amount === 0){
+          return;
+        }else{
+          p.amount--; 
+        }
       }
     });
     refreshCart();
@@ -161,7 +164,10 @@ function App() {
          <Route   path="/"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
          <Route   path="/login"  element={<LoginPage />}/>
-         <Route path="/korpa" element={<Korpa products={cartProducts}  onAdd={addProduct} onRemove ={removeProduct} />} />
+         <Route 
+            path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
+            element={<Korpa products={cartProducts}/>}
+          />
          <Route path="/kontakt" element={<Kontakt></Kontakt>} />
       </Routes>
       <Footer></Footer>

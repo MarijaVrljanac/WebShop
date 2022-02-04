@@ -1,9 +1,13 @@
 import React from 'react';
 import {BsPlusLg, BsDashLg} from "react-icons/bs"
-function Proizvod({product,onAdd,onRemove}) {
+function Proizvod({product,onAdd,onRemove, inCart}) {
+
+
+    const stil = { margin: 1 + "em", borderStyle: "dotted" };
+
+
   return  (  
-    <div className="card">
-     
+    <div className={inCart===1 ? "card" : "card-cart"} style={stil}>
             <div className="card-header" >
                  <img className='card-img-top'  src ={product.image}   /> 
             </div>
@@ -14,10 +18,13 @@ function Proizvod({product,onAdd,onRemove}) {
                 <p className="opisProizvoda">{product.description}</p>
     
                 
-                <p className='cenaRegularna'>  {product.price}  </p>   
-                <p className='cenaPopust' > <strong>  Cena:      </strong>  {product.price*0.9} </p>
-                <h3 className="amount">Kolicina:  {product.amount}</h3>
-                <button
+                <p className='cenaRegularna'>  {product.price} RSD </p>   
+                <p className='cenaPopust' > <strong>  Cena:      </strong>  {product.price*0.9} RSD</p>
+                
+                </div>
+                {inCart === 1 ? (
+        <>
+            <button
                   className="btn"
                   onClick={() => onAdd(product.name, product.id)}
                 >
@@ -27,10 +34,12 @@ function Proizvod({product,onAdd,onRemove}) {
                 className="btn"
                 onClick={() => onRemove(product.name, product.id)}>
                 <BsDashLg />
-              </button>
-                
-            </div> 
-        </div>
+            </button>
+        </>
+      ) : (
+      <h3>Količina: {product.amount}</h3>
+      )}
+    </div>   
     );
 }
 
