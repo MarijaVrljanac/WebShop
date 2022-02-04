@@ -51,7 +51,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            return response()->json(['success'=>false]);
         }
 
         if (!Auth::attempt($request->only('email', 'password'))) {
@@ -67,7 +67,7 @@ class AuthController extends Controller
             'token' => $token
         ];
 
-        return response()->json($response);
+        return response()->json([$response,'success'=>true ]);
     }
 
 
