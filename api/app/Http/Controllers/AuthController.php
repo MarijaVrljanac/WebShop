@@ -17,16 +17,26 @@ class AuthController extends Controller
             [
                 'password' =>  'required' , 
                 'name' => 'required|string|max:100', 
-                'email' => 'required|string|max:100|email'
+                'email' => 'required|string|max:100|email',
+                'phone' => 'string', //postaviti ogranicenje u kakvom formatu mora da bude mobilni telefon
+                'birthdate' => 'string' //postaviti ogranicenje da ovo bas mora da bude datum
             ]
         );
         if ($validator->fails()) 
             return response()->json($validator->errors());
 
+
+         
+            return response()->json( $request->phone);
+
         $user = User::create([
             'name' => $request->name, 
             'email' => $request->email, 
+            'phone' => $request->phone,
+            'birthdate' =>$request->birthdate,
             'password' => Hash::make($request->password)]);
+            
+
 
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json(['data' => $user, 'acess_token' => $token, 'token_type' => 'Bearer']);
