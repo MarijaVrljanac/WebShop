@@ -159,7 +159,6 @@ function App() {
 
   }
 
-<<<<<<< HEAD
   // function sumPrice(id, price){
 
   
@@ -177,8 +176,6 @@ function App() {
   //   refreshCart();
   // }
 
-=======
->>>>>>> 0f5f9df99029b8d37430aa7d7e7268a8554f07ae
 
 
 
@@ -212,11 +209,8 @@ function App() {
       <Routes>
         <Route
           path="/"
-<<<<<<< HEAD
           element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
-=======
           element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
->>>>>>> 0f5f9df99029b8d37430aa7d7e7268a8554f07ae
         />
          <Route   path="/"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
