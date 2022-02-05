@@ -129,9 +129,11 @@ function App() {
   function addProduct(name, id) {
     
     setCartNum(cartNum + 1);
+
     products.forEach((p) => {
       if (p.id === id) {
         p.amount++;
+        setSumPrice(sum+p.price);
       }
     });
     refreshCart();
@@ -154,23 +156,6 @@ function App() {
 
   }
 
-  function sumPrice(id, price){
-
-  
-    setCartNum(cartNum + 1);
-    setSumPrice(sum + 1);
-    // console.log("Broj proizvoda u korpi: "+cartNum);
-    products.forEach((prod) => {
-      if(prod.id === id){
-        prod.amount++;
-        sum += prod.price;
-      }
-      // console.log(prod.amount);
-      console.log(sum);
-    });
-    refreshCart();
-  }
-
 
 
 
@@ -180,14 +165,14 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  sumPrice={sumPrice}/>}
+          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
         />
          <Route   path="/"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
          <Route   path="/login"  element={<LoginPage />}/>
          <Route 
             path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
-            element={<Korpa products={cartProducts}/>}
+            element={<Korpa products={cartProducts} sum={sum}/>}
           />
          <Route path="/kontakt" element={<Kontakt></Kontakt>} />
       </Routes>
