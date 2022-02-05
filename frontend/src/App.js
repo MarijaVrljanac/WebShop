@@ -196,7 +196,7 @@ function App() {
   
     ).map((products, id) => {
       return(
-        <div className='slatkis' id={id}>
+        <div className='slatkisi' id={id}>
           <p></p>
         </div>
       );
