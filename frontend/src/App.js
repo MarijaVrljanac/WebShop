@@ -14,6 +14,9 @@ function App() {
   const [cartNum, setCartNum] = useState(0); 
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
+  const [searchTerm, setSearchTerm] = useState('');
+
+
   const [products] = useState([
     {
       id: 1,
@@ -132,6 +135,7 @@ function App() {
     products.forEach((p) => {
       if (p.id === id) {
         p.amount++;
+        setSumPrice(sum+p.price);
       }
     });
     refreshCart();
@@ -154,46 +158,72 @@ function App() {
 
   }
 
-  function sumPrice(id, price){
+  // function sumPrice(id, price){
 
   
-    setCartNum(cartNum + 1);
-    setSumPrice(sum + 1);
-    // console.log("Broj proizvoda u korpi: "+cartNum);
-    products.forEach((prod) => {
-      if(prod.id === id){
-        prod.amount++;
-        sum += prod.price;
-      }
-      // console.log(prod.amount);
-      console.log(sum);
-    });
-    refreshCart();
-  }
+  //   setCartNum(cartNum + 1);
+  //   setSumPrice(sum + 1);
+  //   // console.log("Broj proizvoda u korpi: "+cartNum);
+  //   products.forEach((prod) => {
+  //     if(prod.id === id){
+  //       prod.amount++;
+  //       sum += prod.price;
+  //     }
+  //     // console.log(prod.amount);
+  //     console.log(sum);
+  //   });
+  //   refreshCart();
+  // }
 
 
 
 
   return (
+
+    
     <BrowserRouter className="App">
       <NavBar cartNum={cartNum}></NavBar>
+  <div className='search'><input type="text" placeholder='Pretraga...' onChange={event => setSearchTerm(event.target.value)}></input>
+    {products.filter((products)=>{
+      if(searchTerm == ""){
+        return products
+      }
+      else if(products.name.toLowerCase().includes(searchTerm.toLowerCase())){
+        return products
+      }
+    }
+  
+    ).map((products, id) => {
+      return(
+        <div className='slatkis' id={id}>
+          <p></p>
+        </div>
+      );
+    
+    } )}
+  
+  
+  </div>
+
       <Routes>
         <Route
           path="/"
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  sumPrice={sumPrice}/>}
+          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
         />
          <Route   path="/"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
          <Route   path="/login"  element={<LoginPage />}/>
          <Route 
             path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
-            element={<Korpa products={cartProducts}/>}
+            element={<Korpa products={cartProducts} sum={sum}/>}
           />
          <Route path="/kontakt" element={<Kontakt></Kontakt>} />
       </Routes>
       <Footer></Footer>
   </BrowserRouter>
   );
+
+
 }
 
 export default App;

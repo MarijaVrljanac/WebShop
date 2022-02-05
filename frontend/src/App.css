@@ -42,6 +42,10 @@
   
 }
 
+.footerlink:hover{
+  color: #5ebfaa;
+}
+
 .footer > div {
   background-color: #5e76bf;
   color:#fff;
@@ -86,20 +90,22 @@
   flex-direction: row;
   align-items: center;
   
-  margin-left: 76%;
+  /* margin-left: 76%; */
 }
+
+
 
 .cart-num {
   background-color: black;
   color: white;
   border-radius: 5px;
   text-align: center;
-  padding-top: 5px;
+  /* padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
   margin-top: 15px;
-  margin-right: 20px;
+  margin-right: 20px; */
 }
 
 .all-products {
@@ -131,11 +137,31 @@
 }
 
 .cart-container {
-  margin: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+ 
   
   
 }
 
+.register{
+  margin-top: -70px;
+  margin-bottom: 5px;
+
+}
+.login{
+  margin-top: -70px;
+  margin-bottom: 5px;
+
+}
+
+
+.proizvodi{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 140px;
+}
 
 
 .card-cart {

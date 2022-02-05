@@ -1,0 +1,22 @@
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #5e76bf;
+}
+
+
+.search input{
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+p{
+    margin: 10px;
+}

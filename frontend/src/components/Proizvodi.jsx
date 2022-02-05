@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Proizvod from './Proizvod';
  
-const Proizvodi = ({ products, onAdd,onRemove, sumPrice }) => {
+const Proizvodi = ({ products, onAdd,onRemove }) => {
   const [sort, setSort] = useState(true);
   function sortAsc(){
     
@@ -12,7 +12,7 @@ const Proizvodi = ({ products, onAdd,onRemove, sumPrice }) => {
     setSort(false);
   }
   return (
-    <div>
+    <div className="proizvodi">
       <h2 className="caption">Naša ponuda</h2>
       <div className="buttons">
         <button className="sortbtn btn" onClick={sortAsc}>Sortiraj rastuće</button>
@@ -25,7 +25,7 @@ const Proizvodi = ({ products, onAdd,onRemove, sumPrice }) => {
                   .sort((a, b) => a.price < b.price ? -1 : 1)
                   .map((p) => (
     
-                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1} sumPrice={sumPrice}/>
+                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1}/>
                   
              ))}
                 </>
@@ -36,7 +36,7 @@ const Proizvodi = ({ products, onAdd,onRemove, sumPrice }) => {
                   .sort((a, b) => a.price < b.price ?  1 : -1)
                   .map((p) => (
     
-                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1} sumPrice={sumPrice} />
+                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1} />
                   
                   ))}
                 </>

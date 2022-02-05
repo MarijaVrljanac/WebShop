@@ -1,5 +1,6 @@
 import React    from 'react';
-
+import {BsFillEnvelopeFill } from "react-icons/bs";
+import {Link} from "react-router-dom";
  
 function Footer( ) {
     return (
@@ -9,6 +10,7 @@ function Footer( ) {
                <strong>Kontaktirajte nas</strong>  
                 <li>+381 11 123 456</li>
                 <li>slatkisi@gmail.com</li>
+                <li className="footerlink"><BsFillEnvelopeFill/><Link to="/kontakt" className="footerlink"> Pište nam... </Link></li>
             </ul>
         </div>
         <div className="footerItem">
