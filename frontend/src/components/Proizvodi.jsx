@@ -25,7 +25,11 @@ const Proizvodi = ({ products, onAdd,onRemove }) => {
                   .sort((a, b) => a.price < b.price ? -1 : 1)
                   .map((p) => (
     
+<<<<<<< HEAD
                       <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1}/>
+=======
+                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1} />
+>>>>>>> 0f5f9df99029b8d37430aa7d7e7268a8554f07ae
                   
              ))}
                 </>
@@ -36,7 +40,11 @@ const Proizvodi = ({ products, onAdd,onRemove }) => {
                   .sort((a, b) => a.price < b.price ?  1 : -1)
                   .map((p) => (
     
+<<<<<<< HEAD
                       <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1} />
+=======
+                      <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1}  />
+>>>>>>> 0f5f9df99029b8d37430aa7d7e7268a8554f07ae
                   
                   ))}
                 </>

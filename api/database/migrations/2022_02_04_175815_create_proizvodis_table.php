@@ -15,6 +15,11 @@ class CreateProizvodisTable extends Migration
     {
         Schema::create('proizvodis', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->double('price');
+            $table->integer('amount');
+            $table->foreignId('category');
             $table->timestamps();
         });
     }
