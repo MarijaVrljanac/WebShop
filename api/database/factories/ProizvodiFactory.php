@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Kategorija;
+use App\Models\Proizvodi;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProizvodiFactory extends Factory

@@ -18,4 +18,11 @@ class Proizvodi extends Model
       ];
 
     use HasFactory;
+
+
+
+    public function kategorija()
+    {
+       return $this->belongsTo(Kategorija::class);
+    }
 }
