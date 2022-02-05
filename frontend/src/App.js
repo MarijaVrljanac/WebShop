@@ -13,6 +13,7 @@ import Kontakt from './components/Kontakt';
 function App() {
   const [cartNum, setCartNum] = useState(0); 
   const [cartProducts, setCartProducts] = useState([]);
+  const [sum, setSumPrice] = useState(0); 
   const [products] = useState([
     {
       id: 1,
@@ -153,13 +154,33 @@ function App() {
 
   }
 
+  function sumPrice(id, price){
+
+  
+    setCartNum(cartNum + 1);
+    setSumPrice(sum + 1);
+    // console.log("Broj proizvoda u korpi: "+cartNum);
+    products.forEach((prod) => {
+      if(prod.id === id){
+        prod.amount++;
+        sum += prod.price;
+      }
+      // console.log(prod.amount);
+      console.log(sum);
+    });
+    refreshCart();
+  }
+
+
+
+
   return (
     <BrowserRouter className="App">
       <NavBar cartNum={cartNum}></NavBar>
       <Routes>
         <Route
           path="/"
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove ={removeProduct} />}
+          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  sumPrice={sumPrice}/>}
         />
          <Route   path="/"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
