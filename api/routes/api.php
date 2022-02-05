@@ -29,4 +29,16 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
    
 
     Route::post('logout', [AuthController::class, 'logout']);  
+
+
+
+Route::get('proizvodi',[ProizvodiController::class,'index']);
+Route::get('proizvodi/{id}',[ProizvodiController::class,'show']);
+
+Route::get('kategorija',[KategorijaController::class,'index']);
+Route::get('kategorija/{id}',[KategorijaController::class,'show']);
+
+Route::get('korpa',[KorpaController::class,'index']);
+Route::get('korpa/{id}',[KorpaController::class,'show']);
+
 });
