@@ -158,71 +158,53 @@ function App() {
     refreshCart();
 
   }
-
-  // function sumPrice(id, price){
-
+ 
+  // <div className='search'><input type="text" placeholder='Pretraga...' onChange={event => setSearchTerm(event.target.value)}></input>
+  //       {products.filter((products)=>{
+  //         if(searchTerm == ""){
+  //           return products
+  //         }
+  //         else if(products.name.toLowerCase().includes(searchTerm.toLowerCase())){
+  //           return products
+  //         }
+  //       }
+      
+  //       ).map((products, id) => {
+  //         return(
+  //           <div className='slatkisi' id={id}>
+  //             <p></p>
+  //           </div>
+  //         );
+        
+  //       } )}
   
-  //   setCartNum(cartNum + 1);
-  //   setSumPrice(sum + 1);
-  //   // console.log("Broj proizvoda u korpi: "+cartNum);
-  //   products.forEach((prod) => {
-  //     if(prod.id === id){
-  //       prod.amount++;
-  //       sum += prod.price;
-  //     }
-  //     // console.log(prod.amount);
-  //     console.log(sum);
-  //   });
-  //   refreshCart();
-  // }
-
-
-
+  
+  //     </div>
 
   return (
 
     
     <BrowserRouter className="App">
-      <NavBar cartNum={cartNum}></NavBar>
-  <div className='search'><input type="text" placeholder='Pretraga...' onChange={event => setSearchTerm(event.target.value)}></input>
-    {products.filter((products)=>{
-      if(searchTerm == ""){
-        return products
-      }
-      else if(products.name.toLowerCase().includes(searchTerm.toLowerCase())){
-        return products
-      }
-    }
-  
-    ).map((products, id) => {
-      return(
-        <div className='slatkisi' id={id}>
-          <p></p>
-        </div>
-      );
-    
-    } )}
-  
-  
-  </div>
+        <NavBar cartNum={cartNum}></NavBar>
+      
 
-      <Routes>
-        <Route
-          path="/"
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
-        />
-         <Route   path="/"  element={<Proizvodi />}/>
-         <Route   path="/register"  element={<RegisterPage />}/>
-         <Route   path="/login"  element={<LoginPage />}/>
-         <Route 
-            path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
-            element={<Korpa products={cartProducts} sum={sum}/>}
+        <Routes>
+          <Route
+            path="/"
+            element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
+            
           />
-         <Route path="/kontakt" element={<Kontakt></Kontakt>} />
-      </Routes>
-      <Footer></Footer>
-  </BrowserRouter>
+          
+          <Route   path="/register"  element={<RegisterPage />}/>
+          <Route   path="/login"  element={<LoginPage />}/>
+          <Route 
+              path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
+              element={<Korpa products={cartProducts} sum={sum}/>}
+            />
+          <Route path="/kontakt" element={<Kontakt></Kontakt>} />
+        </Routes>
+        <Footer></Footer>
+    </BrowserRouter>
   );
 
 
