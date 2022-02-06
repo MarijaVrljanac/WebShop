@@ -14,7 +14,7 @@ function App() {
   const [cartNum, setCartNum] = useState(0); 
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
-  const [searchTerm, setSearchTerm] = useState('');
+
 
 
   const [products] = useState([
@@ -159,27 +159,7 @@ function App() {
 
   }
  
-  // <div className='search'><input type="text" placeholder='Pretraga...' onChange={event => setSearchTerm(event.target.value)}></input>
-  //       {products.filter((products)=>{
-  //         if(searchTerm == ""){
-  //           return products
-  //         }
-  //         else if(products.name.toLowerCase().includes(searchTerm.toLowerCase())){
-  //           return products
-  //         }
-  //       }
-      
-  //       ).map((products, id) => {
-  //         return(
-  //           <div className='slatkisi' id={id}>
-  //             <p></p>
-  //           </div>
-  //         );
-        
-  //       } )}
-  
-  
-  //     </div>
+
 
   return (
 
