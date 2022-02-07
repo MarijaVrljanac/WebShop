@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PorukaController;
+use App\Http\Controllers\ProizvodController;
 use App\Http\Controllers\UserController;
-use App\Models\Poruka;
+ 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,20 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('users', [UserController::class, 'index']);
-Route::get('users/{id}', [UserController::class, 'show']);
+
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan ili ne svako moze da nam posalje poruku
 
-Route::group(['middleware' => ['auth:sanctum']], function () {  
+
+Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan ili ne svako moze da nam posalje poruku
+Route::get('proizvodi',[ProizvodController::class,'index']);
+
+
+
+
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {  //obicni ulogovani korisnici
     Route::get('/profiles', function (Request $request) {  
         return auth()->user();
     });
@@ -31,16 +39,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
    
   
     Route::post('logout', [AuthController::class, 'logout']);  
-
-
-
-    Route::get('proizvodi',[ProizvodiController::class,'index']);
-    Route::get('proizvodi/{id}',[ProizvodiController::class,'show']);
-
-    Route::get('kategorija',[KategorijaController::class,'index']);
-    Route::get('kategorija/{id}',[KategorijaController::class,'show']);
-
-    Route::get('korpa',[KorpaController::class,'index']);
-    Route::get('korpa/{id}',[KorpaController::class,'show']);
 
 });

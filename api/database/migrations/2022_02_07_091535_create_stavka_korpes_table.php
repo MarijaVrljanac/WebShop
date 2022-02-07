@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKorpasTable extends Migration
+class CreateStavkaKorpesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateKorpasTable extends Migration
      */
     public function up()
     {
-        Schema::create('korpas', function (Blueprint $table) {
+        Schema::create('stavka_korpes', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('key');  
+            $table->foreignId('korpa_id');
+            $table->foreignId('proizvod_id');
+            $table->foreignId('user_id');
+          
            
-            $table->string('content');
-
-            $table->unsignedInteger('user_id')->nullable(); 
-             
+           
+            $table->integer('kolicina');
+            $table->double('cena')->default(random_int(100,15000));
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateKorpasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('korpas');
+        Schema::dropIfExists('stavka_korpes');
     }
 }

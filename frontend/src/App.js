@@ -9,12 +9,14 @@ import LoginPage from './components/LoginPage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
+ 
 
+ 
 function App() {
   const [cartNum, setCartNum] = useState(0); 
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
-
+  const[token,setToken] = useState();
 
 
   const [products] = useState([
@@ -125,6 +127,10 @@ function App() {
       category: "sladoled"
     },
   ]);
+
+
+      
+ 
   function refreshCart() {
     let u_korpi = products.filter((p) => p.amount > 0);
     setCartProducts(u_korpi);
@@ -159,13 +165,15 @@ function App() {
 
   }
  
-
+  function addToken(auth_token){
+      setToken(auth_token);
+  }
 
   return (
 
     
     <BrowserRouter className="App">
-        <NavBar cartNum={cartNum}></NavBar>
+        <NavBar cartNum={cartNum} token={token}></NavBar>
       
 
         <Routes>
@@ -176,7 +184,9 @@ function App() {
           />
           
           <Route   path="/register"  element={<RegisterPage />}/>
-          <Route   path="/login"  element={<LoginPage />}/>
+          
+          <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
+          <Route   path="/logout"  element={<LoginPage />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
               element={<Korpa products={cartProducts} sum={sum}/>}

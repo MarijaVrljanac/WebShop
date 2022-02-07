@@ -5,6 +5,8 @@ import {BsSearch} from "react-icons/bs"
 const Proizvodi = ({ products, onAdd,onRemove }) => {
   const [sort, setSort] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  
+
   function sortAsc(){
     
     setSort(true);
@@ -17,7 +19,12 @@ const Proizvodi = ({ products, onAdd,onRemove }) => {
        setSearchTerm(e.target.value);
        console.log(e.target.value);
   }
- 
+  
+
+
+
+
+
   return (
      <div>
     <div className="proizvodi">
