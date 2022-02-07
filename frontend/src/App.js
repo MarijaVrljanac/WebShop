@@ -9,6 +9,7 @@ import LoginPage from './components/LoginPage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
+import Home from './components/Home';
  
 
  
@@ -177,10 +178,12 @@ function App() {
       
 
         <Routes>
-          <Route
-            path="/"
-            element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
+        <Route   path="/"  element={<Home  />}
             
+          />
+          <Route 
+            path="/proizvodi"
+            element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}            
           />
           
           <Route   path="/register"  element={<RegisterPage />}/>

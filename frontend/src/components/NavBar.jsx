@@ -30,23 +30,28 @@ function NavBar({cartNum,token}) {
   return (
     <div className="navbar">
         <Link to="/"  className="navbar-items" >Pocetna </Link>
-        
-        {token == null ? 
-            <>  <Link to="/login"  className="navbar-items" >Uloguj se  </Link>
-             <Link to="/register"  className="navbar-items" >Registruj se  </Link></> 
-             : 
-            
+        <Link to="/proizvodi"  className="navbar-items" >Proizvodi</Link>
+        {token == null ?   //ako nije ulogovan moze da se uloguje ili registruje
+            <>  
+                <Link to="/login"  className="navbar-items" >Uloguj se  </Link>
+                <Link to="/register"  className="navbar-items" >Registruj se  </Link>
+                
+             
+             
+             </> 
+             :  //ako jeste ulologovan moze da se odjavi, da vidi korpu..
+             <>  
              <a href="/" className="navbar-items" onClick={handleLogout}> Odjavi se </a>
-            
-            
-              
-        }
-       
-        <Link to="/korpa" className="navbar-items" >
+             <Link to="/korpa" className="navbar-items" >
                 <BsCartFill />
                 <p className="cart-num">{cartNum}</p>
 
             </Link>
+             </>
+              
+        }
+       
+        
        
 
  

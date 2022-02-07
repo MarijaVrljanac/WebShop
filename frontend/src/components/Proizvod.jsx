@@ -12,7 +12,7 @@ function Proizvod({product,onAdd,onRemove, inCart}) {
                  <img className='card-img-top'  src ={product.image}   /> 
             </div>
             <div className="card-body">
-                <div className="tag tag-teal"> {product.category}    </div>  
+                <div className="tag tag-teal"> {product.category.naziv}    </div>  
                 
                 <h4 className = "naslovKartice">  {product.name}   </h4>
                 <p className="opisProizvoda">{product.description}</p>
