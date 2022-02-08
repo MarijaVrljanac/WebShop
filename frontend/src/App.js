@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import './App.css';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
+import WelcomePage from './components/WelcomePage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
@@ -207,12 +208,13 @@ function App() {
   </div>
 
       <Routes>
+      <Route   path="/"  element={<WelcomePage />}/>
         <Route
-          path="/"
+          path="/kupovina"
           element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
           element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
         />
-         <Route   path="/"  element={<Proizvodi />}/>
+         <Route   path="/kupovina"  element={<Proizvodi />}/>
          <Route   path="/register"  element={<RegisterPage />}/>
          <Route   path="/login"  element={<LoginPage />}/>
          <Route 
@@ -234,27 +236,3 @@ export default App;
 
 
 
-// function App() {
-  
-//   return (
-//     <>
-//     <BrowserRouter className="App">
-//     <NavBar></NavBar>
-      
-//       <Routes>
-//         <Route   path="/"  element={<Proizvodi />}/>
-//         <Route   path="/register"  element={<RegisterPage />}/>
-//         <Route   path="/login"  element={<LoginPage />}/>
-
-        
-         
-          
-//       </Routes>
-//       <Footer></Footer>
-//   </BrowserRouter>
-     
-//     </>
-//   );
-// }
-
-// export default App;
