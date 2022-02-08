@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnNazivToKategorijaTable extends Migration
+class CreatePorukasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddColumnNazivToKategorijaTable extends Migration
      */
     public function up()
     {
-        Schema::table('kategorija', function (Blueprint $table) {
-            //
+        Schema::create('porukas', function (Blueprint $table) {
+            $table->id();
+            $table->string('ime');
+            $table->string('email');
+            $table->string('poruka');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddColumnNazivToKategorijaTable extends Migration
      */
     public function down()
     {
-        Schema::table('kategorija', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('porukas');
     }
 }

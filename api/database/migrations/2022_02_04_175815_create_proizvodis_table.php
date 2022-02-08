@@ -20,6 +20,7 @@ class CreateProizvodisTable extends Migration
             $table->double('price');
             $table->integer('amount');
             $table->foreignId('category');
+            $table->string('image');
             $table->timestamps();
         });
     }

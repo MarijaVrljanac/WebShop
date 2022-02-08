@@ -10,12 +10,15 @@ import WelcomePage from './components/WelcomePage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
+import Home from './components/Home';
+ 
 
+ 
 function App() {
   const [cartNum, setCartNum] = useState(0); 
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
-  const [searchTerm, setSearchTerm] = useState('');
+  const[token,setToken] = useState();
 
 
   const [products] = useState([
@@ -126,6 +129,10 @@ function App() {
       category: "sladoled"
     },
   ]);
+
+
+      
+ 
   function refreshCart() {
     let u_korpi = products.filter((p) => p.amount > 0);
     setCartProducts(u_korpi);
@@ -159,53 +166,17 @@ function App() {
     refreshCart();
 
   }
-
-  // function sumPrice(id, price){
-
-  
-  //   setCartNum(cartNum + 1);
-  //   setSumPrice(sum + 1);
-  //   // console.log("Broj proizvoda u korpi: "+cartNum);
-  //   products.forEach((prod) => {
-  //     if(prod.id === id){
-  //       prod.amount++;
-  //       sum += prod.price;
-  //     }
-  //     // console.log(prod.amount);
-  //     console.log(sum);
-  //   });
-  //   refreshCart();
-  // }
-
-
-
+ 
+  function addToken(auth_token){
+      setToken(auth_token);
+  }
 
   return (
 
     
     <BrowserRouter className="App">
-      <NavBar cartNum={cartNum}></NavBar>
-  <div className='search'><input type="text" placeholder='Pretraga...' onChange={event => setSearchTerm(event.target.value)}></input>
-    {products.filter((products)=>{
-      if(searchTerm == ""){
-        return products
-      }
-      else if(products.name.toLowerCase().includes(searchTerm.toLowerCase())){
-        return products
-      }
-    }
-  
-    ).map((products, id) => {
-      return(
-        <div className='slatkisi' id={id}>
-          <p></p>
-        </div>
-      );
-    
-    } )}
-  
-  
-  </div>
+        <NavBar cartNum={cartNum} token={token}></NavBar>
+      
 
       <Routes>
       <Route   path="/"  element={<WelcomePage />}/>
@@ -221,10 +192,23 @@ function App() {
             path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
             element={<Korpa products={cartProducts} sum={sum}/>}
           />
-         <Route path="/kontakt" element={<Kontakt></Kontakt>} />
-      </Routes>
-      <Footer></Footer>
-  </BrowserRouter>
+          <Route 
+            path="/proizvodi"
+            element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}            
+          />
+          
+          <Route   path="/register"  element={<RegisterPage />}/>
+          
+          <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
+          <Route   path="/logout"  element={<LoginPage />}/>
+          <Route 
+              path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
+              element={<Korpa products={cartProducts} sum={sum}/>}
+            />
+          <Route path="/kontakt" element={<Kontakt></Kontakt>} />
+        </Routes>
+        <Footer></Footer>
+    </BrowserRouter>
   );
 
 

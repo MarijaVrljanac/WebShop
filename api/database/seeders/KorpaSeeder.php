@@ -13,6 +13,6 @@ class KorpaSeeder extends Seeder
      */
     public function run()
     {
-        Korpa::factory(10)->create();
+       // Korpa::factory(10)->create();
     }
 }
