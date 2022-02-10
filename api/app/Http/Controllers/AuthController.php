@@ -62,11 +62,29 @@ class AuthController extends Controller
 
         $user = User::where('email', $request['email'])->firstOrFail();
 
+
+        if(!$user){
+            return response()->json([
+                'status'=>401,
+                'message'=>'Invalid credentials',
+            ]);
+        }else{
+            if($user->admin==1){
+                $role='admin';
+                $token = $user->createToken($user->email.'_AdminToken',['server:admin'])->plainTextToken;
+            }else{
+                $role=' ';
+                $token = $user->createToken($user->email.'_Token',[''])->plainTextToken;
+            }
+        }
+
         $token = $user->createToken('LoginToken')->plainTextToken;
 
         $response = [
-            'user' => $user,
-            'token' => $token
+            'status'=>200,
+            'username'=>$user->name,
+            'token' => $token,
+            'role'=> $role
         ];
 
         return response()->json([$response,'success'=>true ]);

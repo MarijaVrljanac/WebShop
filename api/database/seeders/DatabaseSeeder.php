@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
               $admin->name="Admin";
               $admin->email="admin@gmail.com";
               $admin->password= Hash::make("admin");
+              $admin->admin = 1;
               $admin->save();
         User::factory(10)->create();
 

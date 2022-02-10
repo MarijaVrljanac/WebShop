@@ -1,9 +1,13 @@
 import React from 'react';
 import './RegisterPageStyle.css';
 import {useState} from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 function LoginPage({addToken}) {
+
+
+    
     const [userData,setUserData]=useState({
         email:"",
         password:""
@@ -33,11 +37,22 @@ function LoginPage({addToken}) {
                 if(res.data.success===true){
                    // alert("USPESNO");  
                    
-                   navigate("/"); //ovde cemo upisati na koju stranicu treba da ode ulogovani korisnik
+                  
                     //token koji smo dobili od korisnika treba da sacuvamo u storag-u da bismo znali cemu taj korisnik ima pristup
                     window.sessionStorage.setItem("auth_token",res.data[0].token);
+                    window.sessionStorage.setItem("auth_token",res.data[0].username);
                     addToken(res.data[0].token);
                     console.log(res.data[0].token);
+                    if(res.data[0].role === 'admin')
+                    {
+                         navigate("/admin")
+                    }
+                    else{
+                        navigate("/"); //ovde cemo upisati na koju stranicu treba da ode ulogovani korisnik
+                    }
+
+
+
                 }else{
                     alert("NEUSPESNO");
                 }

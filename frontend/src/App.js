@@ -6,11 +6,11 @@ import Footer from './components/Footer';
 import './App.css';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
-import WelcomePage from './components/WelcomePage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
 import Home from './components/Home';
+import AdminDashboard from './components/AdminDashboard';
  
 
  
@@ -178,29 +178,20 @@ function App() {
         <NavBar cartNum={cartNum} token={token}></NavBar>
       
 
-      <Routes>
-      <Route   path="/"  element={<WelcomePage />}/>
-        <Route
-          path="/kupovina"
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
-          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
-        />
-         <Route   path="/kupovina"  element={<Proizvodi />}/>
-         <Route   path="/register"  element={<RegisterPage />}/>
-         <Route   path="/login"  element={<LoginPage />}/>
-         <Route 
-            path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
-            element={<Korpa products={cartProducts} sum={sum}/>}
+        <Routes>
+        <Route   path="/"  element={<Home  />}
+            
           />
           <Route 
-            path="/proizvodi"
-            element={<Proizvodi  onAdd={addProduct} onRemove={removeProduct}  />}            
+            path="/kupovina"
+            element={<Proizvodi   onAdd={addProduct} onRemove={removeProduct}  />}            
           />
           
           <Route   path="/register"  element={<RegisterPage />}/>
           
           <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
           <Route   path="/logout"  element={<LoginPage />}/>
+          <Route   path="/admin"  element={<AdminDashboard />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
               element={<Korpa products={cartProducts} sum={sum}/>}
@@ -220,3 +211,27 @@ export default App;
 
 
 
+// function App() {
+  
+//   return (
+//     <>
+//     <BrowserRouter className="App">
+//     <NavBar></NavBar>
+      
+//       <Routes>
+//         <Route   path="/"  element={<Proizvodi />}/>
+//         <Route   path="/register"  element={<RegisterPage />}/>
+//         <Route   path="/login"  element={<LoginPage />}/>
+
+        
+         
+          
+//       </Routes>
+//       <Footer></Footer>
+//   </BrowserRouter>
+     
+//     </>
+//   );
+// }
+
+// export default App;
