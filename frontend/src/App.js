@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import './App.css';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
+import WelcomePage from './components/WelcomePage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
@@ -177,9 +178,19 @@ function App() {
         <NavBar cartNum={cartNum} token={token}></NavBar>
       
 
-        <Routes>
-        <Route   path="/"  element={<Home  />}
-            
+      <Routes>
+      <Route   path="/"  element={<WelcomePage />}/>
+        <Route
+          path="/kupovina"
+          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}
+          element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct} />}
+        />
+         <Route   path="/kupovina"  element={<Proizvodi />}/>
+         <Route   path="/register"  element={<RegisterPage />}/>
+         <Route   path="/login"  element={<LoginPage />}/>
+         <Route 
+            path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
+            element={<Korpa products={cartProducts} sum={sum}/>}
           />
           <Route 
             path="/proizvodi"
@@ -209,27 +220,3 @@ export default App;
 
 
 
-// function App() {
-  
-//   return (
-//     <>
-//     <BrowserRouter className="App">
-//     <NavBar></NavBar>
-      
-//       <Routes>
-//         <Route   path="/"  element={<Proizvodi />}/>
-//         <Route   path="/register"  element={<RegisterPage />}/>
-//         <Route   path="/login"  element={<LoginPage />}/>
-
-        
-         
-          
-//       </Routes>
-//       <Footer></Footer>
-//   </BrowserRouter>
-     
-//     </>
-//   );
-// }
-
-// export default App;
