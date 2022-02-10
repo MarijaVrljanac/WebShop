@@ -183,7 +183,7 @@ function App() {
           />
           <Route 
             path="/proizvodi"
-            element={<Proizvodi products={products} onAdd={addProduct} onRemove={removeProduct}  />}            
+            element={<Proizvodi  onAdd={addProduct} onRemove={removeProduct}  />}            
           />
           
           <Route   path="/register"  element={<RegisterPage />}/>
