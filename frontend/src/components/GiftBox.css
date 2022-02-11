@@ -1,0 +1,37 @@
+.giftbox{    
+   text-align: start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+    background-image: url('https://t4.ftcdn.net/jpg/03/01/29/49/360_F_301294998_lqPiEpDFbNdZAyOr2ModZsXRt0Bt35Jf.jpg');
+    background-size: cover;
+}
+
+.img{
+    height: auto;
+    width: auto;
+    border: solid;
+    border-color: black;
+    border-radius:15px;
+    
+}
+
+.list{
+    text-align: center;
+    border-bottom: black;
+    border-style: dashed;
+    border-radius: 3px;
+}
+
+.head{
+    background-color: white;
+    background-size: cover;
+    border: dashed;
+    border-color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
