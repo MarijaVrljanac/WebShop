@@ -27,7 +27,7 @@ Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan i
 Route::get('proizvodi',[ProizvodController::class,'index']);
 
 
-
+Route::get('poruke',[PorukaController::class,'index']);
 
 
 

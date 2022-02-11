@@ -11,6 +11,7 @@ import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
 import Home from './components/Home';
 import AdminDashboard from './components/AdminDashboard';
+import Poruke from './components/Poruke';
  
 
  
@@ -192,6 +193,7 @@ function App() {
           <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
           <Route   path="/logout"  element={<LoginPage />}/>
           <Route   path="/admin"  element={<AdminDashboard />}/>
+          <Route   path="/admin/poruke"  element={<Poruke />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
               element={<Korpa products={cartProducts} sum={sum}/>}

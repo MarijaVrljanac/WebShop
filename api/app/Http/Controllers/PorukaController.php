@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Validator;
 class PorukaController extends Controller
 {
    
+ /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return  Poruka::all();
+    }
+
+
+
+
+
     public function primiPoruku(Request $request)
     {
          
