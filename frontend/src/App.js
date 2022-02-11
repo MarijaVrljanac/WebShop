@@ -9,9 +9,12 @@ import LoginPage from './components/LoginPage';
 import Proizvodi from './components/Proizvodi';
 import Korpa from './components/Korpa';
 import Kontakt from './components/Kontakt';
-import Home from './components/Home';
+import WelcomePage from './components/WelcomePage';
 import AdminDashboard from './components/AdminDashboard';
 import Poruke from './components/Poruke';
+import Adresa from './components/Adresa';
+import GiftBox from './components/GiftBox';
+import NotFound from './components/NotFound';
  
 
  
@@ -180,7 +183,7 @@ function App() {
       
 
         <Routes>
-        <Route   path="/"  element={<Home  />}
+        <Route   path="/"  element={<WelcomePage></WelcomePage>}
             
           />
           <Route 
@@ -199,6 +202,9 @@ function App() {
               element={<Korpa products={cartProducts} sum={sum}/>}
             />
           <Route path="/kontakt" element={<Kontakt></Kontakt>} />
+          <Route path="/adresa" element={<Adresa></Adresa>}/>
+           <Route path="/giftbox" element={<GiftBox></GiftBox>}/>
+           <Route path="/notfound" element={<NotFound></NotFound>}/>
         </Routes>
         <Footer></Footer>
     </BrowserRouter>
@@ -208,32 +214,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-// function App() {
-  
-//   return (
-//     <>
-//     <BrowserRouter className="App">
-//     <NavBar></NavBar>
-      
-//       <Routes>
-//         <Route   path="/"  element={<Proizvodi />}/>
-//         <Route   path="/register"  element={<RegisterPage />}/>
-//         <Route   path="/login"  element={<LoginPage />}/>
-
-        
-         
-          
-//       </Routes>
-//       <Footer></Footer>
-//   </BrowserRouter>
-     
-//     </>
-//   );
-// }
-
-// export default App;

@@ -33,7 +33,7 @@ function NavBar({cartNum,token}) {
 
   return (
     <div className="navbar">
-      <Link to="/"  className="navbar-items" >Pocetna </Link>
+      <Link to="/"  className="navbar-items" >Početna strana</Link>
        
         {token == null ?   //ako nije ulogovan moze da se uloguje ili registruje
             <>  

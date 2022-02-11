@@ -1,51 +1,42 @@
-import React from 'react'
+import React from 'react';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 import './WelcomePagePageStyle.css';
 
-const WelcomePage = () => {
-  return (
-    <div>
-      
-      <div className='welcome'>
-            <div className="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-              <h3>Welcome...</h3>
-          
-{/* <div class="slideshow-container">
-
- 
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="https://static.dw.com/image/16749891_303.jpg" style="width:100%"/>
-    <div class="text">Caption Text</div>
-  </div>
-  
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="https://www.floresboutique.co.uk/upload/files/products/lg_20159118-sweet-gift-boxes.jpg" style="width:100%"/>
-    <div class="text">Caption Two</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="https://media.architecturaldigest.com/photos/55e7658d302ba71f3016531d/4:3/w_800,h_600,c_limit/dam-images-architecture-2015-02-candy-shops-beautiful-candy-shops-01-dylans-candy-bar.jpg" style="width:100%"/>
-    <div class="text">Caption Three</div>
-  </div>
+import {Link} from "react-router-dom";
 
 
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br/>
 
+const slideImages = [
+  'https://mir-s3-cdn-cf.behance.net/project_modules/1400/a438ee76934473.5c7842c0514a2.jpg',
+  'https://static.dw.com/image/16749891_303.jpg',
+  'https://i.pinimg.com/originals/b4/d6/cd/b4d6cd0151ef783319ea223cd1513e16.jpg'
+];
 
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div> */}
-                </div>
+const Slideshow = () => {
+    return (
+
+      <div>
+        <div className='wlcm'><h3>Dobro došli!</h3></div>
+        <Slide easing="ease">
+          <div className="each-slide">
+            <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
+            <Link to="/adresa"><span>Naša prodavnica slatkiša</span></Link>
             </div>
-    </div>
-  )
-}
+          </div>
+          <div className="each-slide">
+            <div style={{'backgroundImage': `url(${slideImages[1]})`}}>
+            <Link to="/kupovina" className="ws"><span>Naši slatkiši</span></Link>
+            </div>
+          </div>
+          <div className="each-slide">
+            <div style={{'backgroundImage': `url(${slideImages[2]})`}}>
+            <Link to="/giftbox" className="ws"> <span>Gift box</span></Link>
+            </div>
+          </div>
+        </Slide>
+      </div>
+    )
+};
 
-export default WelcomePage;
+export default Slideshow;
