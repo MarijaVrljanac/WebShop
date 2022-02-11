@@ -1,27 +1,8 @@
  import { MDBDataTableV5 } from 'mdbreact';
 import React, { useState } from "react";
-import axios from "axios";
-const Poruke = () => {
-    const [poruke,setPoruke] = useState([]);
-      axios.get("api/poruke").then((res)=>{
-      //console.log(res.data[0]);
-      setPoruke(res.data[0]);
-      console.log(poruke)
-    })  .catch(function (error) {
-      if (error.response) {
-        // Request made and server responded
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
-      }
-  
-    });
+
+const Poruke = ({poruke}) => {
+   
     console.log(poruke)
       const [datatable, setDatatable] = React.useState({
         columns: [
@@ -35,12 +16,12 @@ const Poruke = () => {
             },
           },
           {
-            label: 'Email',
+            label: 'email',
             field: 'email',
             width: 200,
           },
           {
-            label: 'Poruka',
+            label: 'poruka',
             field: 'poruka',
             width: 270,
           }

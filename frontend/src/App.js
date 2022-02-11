@@ -15,7 +15,7 @@ import Poruke from './components/Poruke';
 import Adresa from './components/Adresa';
 import GiftBox from './components/GiftBox';
 import NotFound from './components/NotFound';
- 
+import axios from "axios";
 
  
 function App() {
@@ -23,7 +23,26 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
   const[token,setToken] = useState();
+  const [poruke,setPoruke] = useState([]);
+  axios.get("api/poruke").then((res)=>{
+  
+  setPoruke(res.data);
+  //console.log(poruke)
+})  .catch(function (error) {
+  if (error.response) {
+    // Request made and server responded
+    console.log(error.response.data);
+    console.log(error.response.status);
+    console.log(error.response.headers);
+  } else if (error.request) {
+    // The request was made but no response was received
+    console.log(error.request);
+  } else {
+    // Something happened in setting up the request that triggered an Error
+    console.log('Error', error.message);
+  }
 
+});
 
   const [products] = useState([
     {
@@ -196,7 +215,7 @@ function App() {
           <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
           <Route   path="/logout"  element={<LoginPage />}/>
           <Route   path="/admin"  element={<AdminDashboard />}/>
-          <Route   path="/admin/poruke"  element={<Poruke />}/>
+          <Route   path="/admin/poruke"  element={<Poruke poruke={poruke} />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
               element={<Korpa products={cartProducts} sum={sum}/>}
