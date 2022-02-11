@@ -1,6 +1,6 @@
 import React   from 'react';
 import NavBar from "./components/NavBar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import { useState } from "react";
 import Footer from './components/Footer';
 import './App.css';
@@ -16,7 +16,7 @@ import Adresa from './components/Adresa';
 import GiftBox from './components/GiftBox';
 import NotFound from './components/NotFound';
 import axios from "axios";
-
+ 
  
 function App() {
   const [cartNum, setCartNum] = useState(0); 
@@ -198,6 +198,9 @@ function App() {
 
     
     <BrowserRouter className="App">
+      
+
+     
         <NavBar cartNum={cartNum} token={token}></NavBar>
       
 
@@ -224,7 +227,9 @@ function App() {
           <Route path="/adresa" element={<Adresa></Adresa>}/>
            <Route path="/giftbox" element={<GiftBox></GiftBox>}/>
            <Route path="/notfound" element={<NotFound></NotFound>}/>
+            
         </Routes>
+        
         <Footer></Footer>
     </BrowserRouter>
   );
