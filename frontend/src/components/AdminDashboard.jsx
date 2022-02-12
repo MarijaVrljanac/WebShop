@@ -5,7 +5,8 @@ import "./AdminDashboard.css";
 const AdminDashboard = () => {
   return (
     <main>
-    <div className="main__container">
+
+<div className="main__container">
       {/* <!-- MAIN TITLE STARTS HERE --> */}
 
       <div className="main__title">
@@ -111,6 +112,10 @@ const AdminDashboard = () => {
       {/* <!-- CHARTS ENDS HERE --> */}
     </div>
   </main>
+    
+
+      
+   
 );
    
 }

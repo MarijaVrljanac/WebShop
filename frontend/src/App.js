@@ -220,7 +220,7 @@ function App() {
           <Route   path="/logout"  element={<LoginPage />}/>
           <Route   path="/admin"  element={<AdminDashboard />}/>
           <Route   path="/admin/poruke"  element={<Poruke poruke={poruke} />}/>
-          {/* <Route   path="/admin/addProduct"  element={<DodajProizvod />}/> */}
+          <Route   path="/admin/addProduct"  element={<DodajProizvod />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
               element={<Korpa products={cartProducts} sum={sum}/>}
