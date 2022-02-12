@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProizvodResource;
 use App\Models\Proizvodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProizvodController extends Controller
 {
@@ -36,7 +37,35 @@ class ProizvodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' =>  'required' , 
+                'description' => 'required|string|max:100', 
+                'price' => 'required',
+                'amount' => 'required',  
+                'category' => 'required'  ,
+                'image' =>'  required|string'
+
+            ]
+        );
+        if ($validator->fails()) 
+            return response()->json($validator->errors());
+
+
+         
+            
+
+        $p = Proizvodi::create([
+                'name' =>   $request->name, 
+                'description' => $request->description, 
+                'price' =>  $request->price, 
+                'amount' =>  $request->amount, 
+                'category' =>  $request->category, 
+                'image' =>  $request->image
+           
+        ]);
+        return response()->json(["Uspesno kreiran proizvod",$p]);
     }
 
     /**

@@ -27,7 +27,7 @@ Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan i
 Route::get('proizvodi',[ProizvodController::class,'index']);
 
 
-
+Route::get('poruke',[PorukaController::class,'index']); //samo admin moze da vidi poruke
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {  //obicni ulogovani korisnici
@@ -46,6 +46,6 @@ Route::middleware(['auth:sanctum','isAPIAdmin'])->group(function(){ //ako je ulo
         return response()->json(['message'=>'You are in','status'=>200],200);
     });
 
-    Route::get('poruke',[PorukaController::class,'index']); //samo admin moze da vidi poruke
+    Route::post('proizvodi',[ProizvodController::class,'store']);
 
 });
