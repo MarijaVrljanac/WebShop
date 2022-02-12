@@ -78,7 +78,7 @@ class AuthController extends Controller
             }
         }
 
-        $token = $user->createToken('LoginToken')->plainTextToken;
+       // $token = $user->createToken('LoginToken')->plainTextToken;
 
         $response = [
             'status'=>200,
