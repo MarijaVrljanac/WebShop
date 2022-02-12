@@ -6,6 +6,8 @@ main {
   
   .main__container {
     padding: 20px 35px;
+    margin-top: 80px;
+    margin-bottom: 130px;
   }
   
   .main__title {
@@ -38,7 +40,7 @@ main {
     margin: 20px 0;
   }
   
-  .card {
+  .cardAdmin {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

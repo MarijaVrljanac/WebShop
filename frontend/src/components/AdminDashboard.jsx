@@ -20,26 +20,26 @@ const AdminDashboard = () => {
 
       {/* <!-- MAIN CARDS STARTS HERE --> */}
       <div className="main__cards">
-        <div className="card">
+        <div className="cardAdmin">
           <i
             className="fa fa-user-o fa-2x text-lightblue"
             aria-hidden="true"
           ></i>
           <div className="card_inner">
-            <p className="text-primary-p">Number of Subscribers</p>
+            <p className="text-primary-p">Broj korisnika</p>
             <span className="font-bold text-title">578</span>
           </div>
         </div>
 
-        <div className="card">
+        <div className="cardAdmin">
           <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
           <div className="card_inner">
-            <p className="text-primary-p">Times of Watching</p>
+            <p className="text-primary-p">Broj proizvoda</p>
             <span className="font-bold text-title">2467</span>
           </div>
         </div>
 
-        <div className="card">
+        <div className="cardAdmin">
           <i
             className="fa fa-video-camera fa-2x text-yellow"
             aria-hidden="true"
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="card">
+        <div className="cardAdmin">
           <i
             className="fa fa-thumbs-up fa-2x text-green"
             aria-hidden="true"
