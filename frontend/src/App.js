@@ -228,7 +228,7 @@ function App() {
           <Route path="/kontakt" element={<Kontakt></Kontakt>} />
           <Route path="/adresa" element={<Adresa></Adresa>}/>
            <Route path="/giftbox" element={<GiftBox></GiftBox>}/>
-           <Route path="/notfound" element={<NotFound></NotFound>}/>
+           <Route path="/*" element={<NotFound></NotFound>}/>
             
         </Routes>
         

@@ -1,10 +1,11 @@
  import { MDBDataTableV5 } from 'mdbreact';
 import React, { useState } from "react";
-
+import './Poruke.css';
 const Poruke = ({poruke}) => {
    
     console.log(poruke)
       const [datatable, setDatatable] = React.useState({
+       
         columns: [
           {
             label: 'Ime',
@@ -40,7 +41,7 @@ const Poruke = ({poruke}) => {
     })      
         
     
-      return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} />;
+      return <div className='tabelaPoruka'><MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} /></div>;
     }
  
 export default Poruke
