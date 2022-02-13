@@ -7,7 +7,7 @@ function NavBar({cartNum,token}) {
 
   function handleLogout(){ 
     console.log("USAO")
-    alert("A");
+     
     var config = {
       method: 'post',
       url: '/logout',
@@ -17,23 +17,22 @@ function NavBar({cartNum,token}) {
       },
     };
     console.log(window.sessionStorage.getItem("auth_token"))
-    alert("A");
+    
     axios(config)
     .then(function (response) {
      
       console.log(response);
-      alert("A");
-      window.sessionStorage.setItem("auth_token",null); 
-      window.sessionStorage.setItem("auth_name",null); 
-      alert("C");
+     
+      window.sessionStorage.setItem('auth_token',null); 
+      window.sessionStorage.setItem('auth_name',null); 
+      
 
     })
     .catch(function (error) {
-      alert("B");
-      window.sessionStorage.setItem("auth_token",null); 
-      window.sessionStorage.setItem("auth_name",null); 
+     
+      
       console.log(error);
-      alert("B");
+      
 
     }); 
   }

@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css'
 import './WelcomePagePageStyle.css';
 
 import {Link} from "react-router-dom";
-
+import axios from 'axios'
 
 
 const slideImages = [
@@ -14,6 +14,11 @@ const slideImages = [
 ];
 
 const Slideshow = () => {
+ 
+
+
+
+
     return (
 
       <div>

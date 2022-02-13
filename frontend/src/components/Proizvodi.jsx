@@ -42,7 +42,7 @@ const Proizvodi = ( {  onAdd,onRemove }) => {
     setSort(false);
   }
   function handleInput(e){
-       setSearchTerm(e.target.value);
+       setSearchTerm(e.target.value.toLowerCase() );
        console.log(e.target.value);
   }
   
@@ -87,7 +87,7 @@ const Proizvodi = ( {  onAdd,onRemove }) => {
                     <>
                     {products
                        .sort((a, b) => a.price < b.price ? -1 : 1)
-                       .filter(p=>p.name.includes(searchTerm))
+                       .filter(p=>p.name.toLowerCase().includes(searchTerm))
                        .map((p) => (
          
                            <Proizvod product={p} key={p.id} onAdd={onAdd} onRemove={onRemove} inCart={1}/>
