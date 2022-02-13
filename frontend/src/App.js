@@ -16,6 +16,7 @@ import Adresa from './components/Adresa';
 import GiftBox from './components/GiftBox';
 import NotFound from './components/NotFound';
 import axios from "axios";
+ 
 import DodajProizvod from './components/DodajProizvod';
  
  
@@ -24,6 +25,7 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [sum, setSumPrice] = useState(0); 
   const[token,setToken] = useState();
+
   const [poruke,setPoruke] = useState([]);
   axios.get("api/poruke").then((res)=>{
   
@@ -44,7 +46,6 @@ function App() {
   }
 
 });
-
   const [products] = useState([
     {
       id: 1,
@@ -219,7 +220,7 @@ function App() {
           <Route   path="/login"  element={<LoginPage addToken={addToken}/>}/>
           <Route   path="/logout"  element={<LoginPage />}/>
           <Route   path="/admin"  element={<AdminDashboard />}/>
-          <Route   path="/admin/poruke"  element={<Poruke poruke={poruke} />}/>
+          <Route   path="/admin/poruke"  element={<Poruke poruke={poruke}  />}/>
           <Route   path="/admin/addProduct"  element={<DodajProizvod />}/>
           <Route 
               path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id

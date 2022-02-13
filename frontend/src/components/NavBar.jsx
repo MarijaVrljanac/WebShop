@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
  
 function NavBar({cartNum,token}) {
 
-  function handleLogout(){ //logout se sjebao ali popravicemo
+  function handleLogout(){ 
     console.log("USAO")
+    alert("A");
     var config = {
       method: 'post',
-      url: 'api/logout',
+      url: '/logout',
       headers: { 
         'Authorization': 'Bearer '+window.sessionStorage.getItem("auth_token")
         
@@ -19,13 +20,21 @@ function NavBar({cartNum,token}) {
     alert("A");
     axios(config)
     .then(function (response) {
-     // console.log(JSON.stringify(response.data));
+     
+      console.log(response);
       alert("A");
       window.sessionStorage.setItem("auth_token",null); 
       window.sessionStorage.setItem("auth_name",null); 
+      alert("C");
+
     })
     .catch(function (error) {
+      alert("B");
+      window.sessionStorage.setItem("auth_token",null); 
+      window.sessionStorage.setItem("auth_name",null); 
       console.log(error);
+      alert("B");
+
     }); 
   }
 

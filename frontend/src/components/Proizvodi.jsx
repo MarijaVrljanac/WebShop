@@ -4,6 +4,12 @@ import {BsSearch} from "react-icons/bs"
 import axios from "axios";
  
 const Proizvodi = ( {  onAdd,onRemove }) => {
+
+
+
+
+
+
   const [sort, setSort] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   
