@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::get('/korisnici', [UserController::class, 'index']);
+
 
 Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan ili ne svako moze da nam posalje poruku
 Route::get('proizvodi',[ProizvodController::class,'index']);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
- 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,32 +16,30 @@ class AuthController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'password' =>  'required' , 
-                'name' => 'required|string|max:100', 
+                'password' =>  'required',
+                'name' => 'required|string|max:100',
                 'email' => 'required|string|max:100|email',
-                'phone' => 'string', //postaviti ogranicenje u kakvom formatu mora da bude mobilni telefon
-                'birthdate' => 'string' //postaviti ogranicenje da ovo bas mora da bude datum
+                'phone' => 'string',
+                'birthdate' => 'string'
 
             ]
         );
-        if ($validator->fails()) 
+        if ($validator->fails()) {
             return response()->json($validator->errors());
-
-
-         
-            
+        }
 
         $user = User::create([
-            'name' => $request->name, 
-            'email' => $request->email, 
+            'name' => $request->name,
+            'email' => $request->email,
             'phone' => $request->phone,
-            'birthdate' =>$request->birthdate,
-            'password' => Hash::make($request->password)]);
-            
+            'birthdate' => $request->birthdate,
+            'password' => Hash::make($request->password)
+        ]);
+
 
 
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response()->json(['data' => $user, 'acess_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json(['data' => $user, 'access_token' => $token, 'token_type' => 'Bearer']);
     }
 
 
@@ -53,7 +51,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['success'=>false]);
+            return response()->json(['success' => false]);
         }
 
         if (!Auth::attempt($request->only('email', 'password'))) {
@@ -63,31 +61,31 @@ class AuthController extends Controller
         $user = User::where('email', $request['email'])->firstOrFail();
 
 
-        if(!$user){
+        if (!$user) {
             return response()->json([
-                'status'=>401,
-                'message'=>'Invalid credentials',
+                'status' => 401,
+                'message' => 'Invalid credentials',
             ]);
-        }else{
-            if($user->admin==1){
-                $role='admin';
-                $token = $user->createToken($user->email.'_AdminToken',['server:admin'])->plainTextToken;
-            }else{
-                $role=' ';
-                $token = $user->createToken($user->email.'_Token',[''])->plainTextToken;
+        } else {
+            if ($user->admin == 1) {
+                $role = 'admin';
+                $token = $user->createToken($user->email . '_AdminToken', ['server:admin'])->plainTextToken;
+            } else {
+                $role = ' ';
+                $token = $user->createToken($user->email . '_Token', [''])->plainTextToken;
             }
         }
 
-       // $token = $user->createToken('LoginToken')->plainTextToken;
+        // $token = $user->createToken('LoginToken')->plainTextToken;
 
         $response = [
-            'status'=>200,
-            'username'=>$user->name,
+            'status' => 200,
+            'username' => $user->name,
             'token' => $token,
-            'role'=> $role
+            'role' => $role
         ];
 
-        return response()->json([$response,'success'=>true ]);
+        return response()->json([$response, 'success' => true]);
     }
 
 

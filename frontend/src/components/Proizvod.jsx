@@ -11,7 +11,7 @@ function Proizvod({product,onAdd,onRemove, inCart}) {
      axios({
        method: "GET",
        url:
-         "https://free.currconv.com/api/v7/convert?q=RSD_EUR&compact=ultra&apiKey=ccf4b20e3c691e9010c9",
+        "https://free.currconv.com/api/v7/convert?q=RSD_EUR&compact=ultra&apiKey=ccf4b20e3c691e9010c9",
      })
        .then((response) => {
          console.log(response.data);

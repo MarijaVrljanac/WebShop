@@ -25,8 +25,9 @@ function RegisterPage() {
         //te podatke sada treba da saljemo laravelu, ali to radimo kada korisnik submituje formu
     }
     let navigate = useNavigate();
+
     function handleRegister(e){
-             
+             console.log("Bla");
             e.preventDefault();   
             axios
                 .post("http://127.0.0.1:8000/api/register", userData )
@@ -50,6 +51,8 @@ function RegisterPage() {
                     }
                 
                   });
+
+                  console.log("Blaaa");
     }
     return (
         <div className='register'>
