@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Kategorija;
 
 use App\Models\Korpa;
+use App\Models\Kupovina;
 use App\Models\Proizvodi;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -46,6 +47,13 @@ class DatabaseSeeder extends Seeder
 
         $ps = new ProizvodiSeeder();
         $ps->run();
+
+        $kupovina1 = new Kupovina();
+        $kupovina1->sum = 100;
+        $kupovina1->cartNum = 1;
+        $kupovina1->user_id = 1;
+        $kupovina1->korpa_id = 1;
+        $kupovina1->save();
 
     }
 }

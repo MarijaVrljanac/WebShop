@@ -24,4 +24,9 @@ class Korpa extends Model
         return $this->belongsTo(Proizvodi::class);
     }
     use HasFactory;
+
+    public function kupovina()
+    {
+      return $this->hasMany(Kupovina::class);
+    }
 }

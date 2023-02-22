@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Proizvod from './Proizvod';
 import {BsSearch} from "react-icons/bs"
 import axios from "axios";
@@ -6,8 +6,8 @@ import axios from "axios";
 const Proizvodi = ( {  onAdd,onRemove }) => {
 
 
-
-
+ 
+  
 
 
   const [sort, setSort] = useState(true);
@@ -15,20 +15,20 @@ const Proizvodi = ( {  onAdd,onRemove }) => {
   
   const [products,setProducts] = useState([]);
   axios.get("api/proizvodi").then((res)=>{
-    console.log(res.data.data);
+    //console.log(res.data.data);
     setProducts(res.data.data);
   })  .catch(function (error) {
     if (error.response) {
       // Request made and server responded
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
+      // console.log(error.response.data);
+      // console.log(error.response.status);
+      // console.log(error.response.headers);
     } else if (error.request) {
       // The request was made but no response was received
-      console.log(error.request);
+      //console.log(error.request);
     } else {
       // Something happened in setting up the request that triggered an Error
-      console.log('Error', error.message);
+      //console.log('Error', error.message);
     }
 
   });

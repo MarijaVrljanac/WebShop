@@ -219,7 +219,7 @@ function App() {
         <Route path="/admin/addProduct" element={<DodajProizvod />} />
         <Route
           path="/korpa" // /cart*prihvata sve putanje; konkretna putanja bi bila npr /cart/:id
-          element={<Korpa products={cartProducts} sum={sum} cartNum={cartNum} />}
+          element={<Korpa products={cartProducts} sum={sum} cartNum={cartNum} user_id={2} korpa_id={2} />}
         />
         <Route path="/kontakt" element={<Kontakt></Kontakt>} />
         <Route path="/adresa" element={<Adresa></Adresa>} />

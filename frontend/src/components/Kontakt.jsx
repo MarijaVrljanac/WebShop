@@ -15,7 +15,7 @@ function Kontakt() {
     let newPorukaData = porukaData;
 
     newPorukaData[e.target.name] = e.target.value;
-
+    
     setPorukaData(newPorukaData);
     console.log(newPorukaData);
   }
