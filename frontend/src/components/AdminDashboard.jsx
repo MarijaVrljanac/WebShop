@@ -5,19 +5,14 @@ import axios from "axios";
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
+  const [proizvodi, setProizvodi] = useState([]);
 
   function getUsers() {
-    //kopirati neki api poziv sa GET metodom
-    //.then(res) => (res){
-    //console.log(res)}
-    //setUsers(res.data.data)
-    //.catch...
-
     axios
       .get("api/korisnici")
       .then((res) => {
-        console.log(res.data.data);
-        setUsers(res.data.data);
+        console.log(res.data);
+        setUsers(res.data);
       })
       .catch(function (error) {
         if (error.response) {
@@ -37,7 +32,34 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     getUsers();
-  }, []); //realtime
+  }, []);
+
+  function getProizvodi() {
+    axios
+      .get("api/proizvodi")
+      .then((res) => {
+        console.log(res.data.data);
+        setProizvodi(res.data.data);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+      });
+  }
+
+  useEffect(() => {
+    getProizvodi();
+  }, []);
 
   return (
     <main>
@@ -71,7 +93,7 @@ const AdminDashboard = () => {
             <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
             <div className="card_inner">
               <p className="text-primary-p">Broj proizvoda</p>
-              <span className="font-bold text-title">2467</span>
+              <span className="font-bold text-title">{proizvodi.length}</span>
             </div>
           </div>
 
@@ -81,7 +103,7 @@ const AdminDashboard = () => {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Videos</p>
+              <p className="text-primary-p">Broj poruka</p>
               <span className="font-bold text-title">340</span>
             </div>
           </div>
@@ -92,7 +114,7 @@ const AdminDashboard = () => {
               aria-hidden="true"
             ></i>
             <div className="card_inner">
-              <p className="text-primary-p">Number of Likes</p>
+              <p className="text-primary-p">Broj kupovina</p>
               <span className="font-bold text-title">645</span>
             </div>
           </div>

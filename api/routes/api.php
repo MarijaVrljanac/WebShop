@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KupovinaController;
 use App\Http\Controllers\PorukaController;
 use App\Http\Controllers\ProizvodController;
 use App\Http\Controllers\UserController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::get('/korisnici', [UserController::class, 'index']);
+Route::get('korisnici', [UserController::class, 'index']);
 
 
 Route::post('kontakt', [PorukaController::class, 'primiPoruku']);   //ulogovan ili ne svako moze da nam posalje poruku
@@ -31,6 +32,7 @@ Route::get('proizvodi',[ProizvodController::class,'index']);
 
 Route::get('poruke',[PorukaController::class,'index']); //samo admin moze da vidi poruke
 
+Route::post('kupi', [KupovinaController::class,'store']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {  //obicni ulogovani korisnici
     Route::get('/profiles', function (Request $request) {  

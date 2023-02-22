@@ -35,8 +35,8 @@ function LoginPage({addToken}) {
             .then((res)=>{ //ako se uspesno izvrsi logovanje uci ce u funkciju (zbog ovog then)
                 console.log(res.data[0]);
                 if(res.data.success===true){
-                   // alert("USPESNO");  
-                   
+                  // alert("USPESNO");  
+                   //console.log(res);
                   
                     //token koji smo dobili od korisnika treba da sacuvamo u storag-u da bismo znali cemu taj korisnik ima pristup
                     window.sessionStorage.setItem("auth_token",res.data[0].token);
@@ -45,6 +45,7 @@ function LoginPage({addToken}) {
                     console.log(res.data[0].token);
                     if(res.data[0].role === 'admin')
                     {
+                      //  user_id = res.data[0].username
                          navigate("/admin")
                     }
                     else{

@@ -1,0 +1,11 @@
+.nastavibtn {
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 33px;
+  font-family: Poppins, Arial, "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.4s ease;
+  font-size: 18px;
+  background-color: #5e76bf;
+  }
